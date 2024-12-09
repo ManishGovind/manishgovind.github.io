@@ -7,8 +7,7 @@ first_name: Manish
 middle_name: Kumar
 last_name: Govind
 email: mgovind@charlotte.edu
-description: > # the ">" symbol means to ignore newlines until "footer_text:"
- I am a First year PhD Student at UNC Charlotte. My reseach interests fall at the intersection of Computer vision , Robot Learning, Multi modal AI.I am advised by Dr. Srijan Das.  
+description: > # the ">" symbol means to ignore newlines until "footer_text:"  
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
@@ -112,7 +111,7 @@ youtube_id: # your youtube channel id (youtube.com/@<youtube_id>)
 zotero_username: # your zotero username
 
 contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+  .
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
