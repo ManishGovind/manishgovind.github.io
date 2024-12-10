@@ -332,6 +332,8 @@ scholar:
 
   replace_strings: true
   join_strings: true
+  strings:
+    Manish Kumar Govind: "**Manish Kumar Govind**"
 
   details_dir: bibliography
   details_link: Details
