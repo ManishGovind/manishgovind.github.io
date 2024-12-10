@@ -2,7 +2,7 @@
 layout: page
 title: SumBA-Video summarization using State Space Models
 description: 
-img: assets/img/SumBA.JPEG
+img: assets/img/SumBA.jpeg
 importance: 1
 category: work
 related_publications: false
