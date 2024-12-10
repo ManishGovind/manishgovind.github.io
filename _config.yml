@@ -51,7 +51,7 @@ rss_icon: true
 
 navbar_fixed: true
 footer_fixed: true
-search_enabled: true
+search_enabled: false
 socials_in_search: true
 bib_search: true
 
@@ -414,7 +414,7 @@ imagemagick:
     - ".tiff"
     - ".gif"
   output_formats:
-    webp: "-resize 600x"
+    webp: "-resize 800x"
 
 
 
