@@ -16,7 +16,7 @@ news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 
 ---
-I am a first-year PhD student in Computer Science at the University of North Carolina at Charlotte, where I work as a research assistant in the CharmML Lab under the guidance of [https://srijandas07.github.io/]Dr. Srijan Das. My research interests lie at the intersection of computer vision, robot learning, and multimodal AI. I hold a master’s degree in Computer Science from UNC Charlotte and a bachelor’s degree in Computer Science from MNIT Jaipur. 
+I am a first-year PhD student in Computer Science at the University of North Carolina at Charlotte, under the guidance of [Dr. Srijan Das](https://srijandas07.github.io/) and co advised by [Dr. Ahmed Helmy](https://sites.google.com/uncc.edu/helmy/home) . My research interests lie at the intersection of computer vision, robot learning, and multimodal AI. I hold a master’s degree in Computer Science from UNC Charlotte and a bachelor’s degree in Computer Science from MNIT Jaipur. 
 
 <!-- My passion for research was ignited during my master’s program, where I actively contributed to several conferences.   -->
 
