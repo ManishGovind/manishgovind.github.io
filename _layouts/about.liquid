@@ -35,18 +35,18 @@ layout: default
         {% if page.profile.more_info %}
           <div class="more-info">{{ page.profile.more_info }}</div>
         {% endif %}
-        {% if page.social %}
+        
+      </div>
+    {% endif %}
+    
+    <div class="clearfix">{{ content }}</div>
+    {% if page.social %}
           <div class="social">
             <div class="contact-icons">{% include social.liquid %}</div>
 
             <div class="contact-note">{{ site.contact_note }}</div>
           </div>
-        {% endif %}
-      </div>
-    {% endif %}
-    
-    <div class="clearfix">{{ content }}</div>
-
+      {% endif %}
     <!-- News -->
     {% if page.news and site.announcements.enabled %}
       <h2>
@@ -66,11 +66,10 @@ layout: default
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Rsearch</a>
+        <a href="{{ '/publications/' | relative_url }}" style="color: inherit"> Research</a>
       </h2>
       {% include selected_papers.liquid %}
     {% endif %}
 
-    
   </article>
 </div>
