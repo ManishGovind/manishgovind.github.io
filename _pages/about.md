@@ -16,7 +16,7 @@ news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 
 ---
-I am a first-year PhD student in Computer Science at the University of North Carolina at Charlotte, under the guidance of [Dr. Srijan Das](https://srijandas07.github.io/) and co advised by [Dr. Ahmed Helmy](https://sites.google.com/uncc.edu/helmy/home) .Prior to this,  I received a master’s degree in Computer Science from UNC Charlotte and a bachelor’s degree in Computer Science from MNIT Jaipur. My research interests lie at the intersection of computer vision, Robot Learning, and Multimodal AI. 
+I am a first-year PhD student in Computer Science at the University of North Carolina at Charlotte, under the guidance of [Dr. Srijan Das](https://srijandas07.github.io/) and co advised by [Dr. Ahmed Helmy](https://sites.google.com/uncc.edu/helmy/home). Prior to this, I received a master’s degree in Computer Science from UNC Charlotte and a bachelor’s degree in Computer Science from MNIT Jaipur. My research interests lie at the intersection of computer vision, Robot Learning, and Multimodal AI. 
 
 <!-- My passion for research was ignited during my master’s program, where I actively contributed to several conferences.   -->
 
