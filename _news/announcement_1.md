@@ -6,5 +6,5 @@ related_posts: false
 display: true
 ---
 
-One paper [LLAVIDAL-V1](https://arxiv.org/abs/2406.09390v1) accepted in two NeurIPS 2024 Workshops([MAR](https://marworkshop.github.io/neurips24/) and [VLM](https://video-and-language-workshop-2024.webflow.io/)).
+One paper [LLAVIDAL](https://arxiv.org/abs/2406.09390v1) accepted in two NeurIPS 2024 Workshops([MAR](https://marworkshop.github.io/neurips24/) and [VLM](https://video-and-language-workshop-2024.webflow.io/)).
 
