@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: SumBA
 description: Video sumarization using state space models  
 img: assets/img/SumBA.jpeg
@@ -26,7 +26,5 @@ related_publications: false
         {% include video.liquid path="assets/video/summ.mp4" class="img-fluid rounded z-depth-1" controls=true %}
     </div>
 </div> 
-<div class="caption">
-    (Left) full video    (right)  summarized video. 
-</div>
+
 
