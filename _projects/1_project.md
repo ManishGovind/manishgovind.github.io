@@ -23,7 +23,7 @@ related_publications: false
         {% include figure.liquid loading="eager" path="assets/img/SOTA.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-2 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/Comparision.png" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/comparision.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
