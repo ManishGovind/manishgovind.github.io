@@ -34,7 +34,6 @@ related_publications: false
         {% include video.liquid path="assets/video/full-video-SH-1.mp4" class="img-fluid rounded z-depth-1" controls=false autoplay=true  %}
          <figcaption class="caption">Full video</figcaption>
     </div>
-    
     <div class="col-sm mt-3 mt-md-0">
         {% include video.liquid path="assets/video/summ.mp4" class="img-fluid rounded z-depth-1" controls=false autoplay=true %}
         <figcaption class="caption">Summarized video</figcaption>
