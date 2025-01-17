@@ -7,6 +7,13 @@ importance: 1
 category: work
 related_publications: false
 ---
+<style>
+    .fixed-height {
+        height: 300px; /* Set a fixed height */
+        object-fit: cover; /* Ensure the image fits within the height */
+    }
+</style>
+
 <h3>Method & Architecture</h3>
 <div class="row">
     <div class="col-sm-6 mt-2 mt-md-0">
