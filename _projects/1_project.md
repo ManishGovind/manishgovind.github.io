@@ -9,7 +9,7 @@ related_publications: false
 ---
 <style>
     .fixed-height {
-        height: 200px; /* Set a fixed height */
+        height: 250px; /* Set a fixed height */
     }
 </style>
 
@@ -19,7 +19,7 @@ related_publications: false
         {% include figure.liquid loading="eager" path="assets/img/method.png"  class="img-fluid rounded z-depth-1 fixed-height" caption="SumBA Encoder"  %}
     </div>
     <div class="col-sm-6 mt-2 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/Architecture.png" class="img-fluid rounded z-depth-1 fixed-height" caption="Our Proposed Method" %}
+        {% include figure.liquid loading="eager" path="assets/img/Architecture.png" class="img-fluid rounded z-depth-1 fixed-height" caption="Proposed Approach" %}
     </div>
 </div>
 
