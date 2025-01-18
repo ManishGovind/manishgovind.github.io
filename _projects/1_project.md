@@ -9,7 +9,7 @@ related_publications: false
 ---
 <style>
     .fixed-height {
-        height: 250px; /* Set a fixed height */
+        height: 150px; /* Set a fixed height */
     }
 </style>
 
