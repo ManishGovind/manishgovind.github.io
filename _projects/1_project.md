@@ -10,7 +10,6 @@ related_publications: false
 <style>
     .fixed-height {
         height: 200px; /* Set a fixed height */
-        object-fit: cover; /* Ensure the image fits within the height */
     }
 </style>
 
