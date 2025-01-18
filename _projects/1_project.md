@@ -17,20 +17,20 @@ related_publications: false
 <h3>Method & Architecture</h3>
 <div class="row">
     <div class="col-sm-6 mt-2 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/method.png"  class="img-fluid rounded z-depth-1" caption="SumBA Encoder"  %}
+        {% include figure.liquid loading="eager" path="assets/img/method.png"  class="img-fluid rounded z-depth-1 fixed-height" caption="SumBA Encoder"  %}
     </div>
     <div class="col-sm-6 mt-2 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/Architecture.png" class="img-fluid rounded z-depth-1" caption="Our Proposed Method" %}
+        {% include figure.liquid loading="eager" path="assets/img/Architecture.png" class="img-fluid rounded z-depth-1 fixed-height" caption="Our Proposed Method" %}
     </div>
 </div>
 
 <h3>Quantitative Results</h3>
 <div class="row">
     <div class="col-sm-6 mt-2 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/SOTA.png" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/SOTA.png"  class="img-fluid rounded z-depth-1 fixed-height" caption="State-of-the-Art" %}
     </div>
     <div class="col-sm-6 mt-2 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/comparision.png" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/comparision.png" class="img-fluid rounded z-depth-1 fixed-height" caption="Computational Performance" %}
     </div>
 </div>
 
