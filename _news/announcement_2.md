@@ -3,7 +3,7 @@ layout: post
 date : 2025-05-01 15:59:00-0400
 inline: true
 related_posts: false
-display: true
+display: false
 ---
 One paper [From my view to yours](https://arxiv.org/abs/2501.05711) has been accpeted at two CVPR'25 worshops [EgoVis](https://egovis.github.io/cvpr25) and [MMFM](https://sites.google.com/view/mmfm3rdworkshop) 
 
