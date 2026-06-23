@@ -74,12 +74,6 @@ permalink: /REGEN/
               </span>
               <span class="link-block">
                 <a href="#" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                  <span>PDF</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fab fa-github"></i></span>
                   <span>Code</span>
                 </a>
@@ -143,8 +137,12 @@ permalink: /REGEN/
         <h2 class="title is-3">Method</h2>
 
         <div class="content">
-          <figure class="image" style="overflow:hidden; border-radius: 14px; background: #f5f5f5; min-height: 240px; display: flex; align-items: center; justify-content: center;">
-            <p style="padding: 2rem; color: #777; font-style: italic;">Method Diagram: Figure Coming Soon</p>
+          <figure class="image" style="overflow:hidden; border-radius: 14px;">
+            <canvas
+              id="method-figure"
+              aria-label="REGEN method overview"
+              style="width: 100%; height: auto; display: block;"
+            ></canvas>
           </figure>
         </div>
 
@@ -352,7 +350,7 @@ permalink: /REGEN/
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@inproceedings{govind2026regen,
+    <pre><code>@article{govind2026regen,
   title={World Action Models Enable Continual Imitation Learning with Generative Replays},
   author={Govind, Manish Kumar and Reilly, Dominick and Patel, Smit and Le, Hieu and Das, Srijan},
   booktitle={},
@@ -378,5 +376,7 @@ permalink: /REGEN/
   </div>
 </footer> -->
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="./static/js/regen-pdf.js"></script>
 </body>
 </html>
