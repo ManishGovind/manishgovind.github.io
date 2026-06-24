@@ -457,7 +457,7 @@ body {
   border-color: var(--regen-border) !important;
 }
 
-.regen-results-table tbody tr:nth-child(even):not(.regen-er-row) {
+.regen-results-table tbody tr:nth-child(even):not(.regen-ours-row) {
   background: #f8fbff;
 }
 
@@ -472,11 +472,11 @@ body {
   font-size: 0.9rem;
 }
 
-.regen-er-row {
+.regen-ours-row {
   background-color: #dfeaf8 !important;
 }
 
-.regen-er-row td {
+.regen-ours-row td {
   background-color: #dfeaf8 !important;
   font-weight: 500;
 }
