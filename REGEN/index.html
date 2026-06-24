@@ -138,11 +138,11 @@ permalink: /REGEN/
 
         <div class="content">
           <figure class="image" style="overflow:hidden; border-radius: 14px;">
-            <canvas
-              id="method-figure"
-              aria-label="REGEN method overview"
+            <img
+              src="./assets/img/RGR-method.png"
+              alt="REGEN method overview"
               style="width: 100%; height: auto; display: block;"
-            ></canvas>
+            >
           </figure>
         </div>
 
@@ -169,6 +169,100 @@ permalink: /REGEN/
             its own generative outputs as memory.
           </p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="visualization">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-12">
+        <h2 class="title is-3">Visualization</h2>
+
+        <h3 class="title is-4">Pseudo Demos Generated in REGEN</h3>
+        <div class="content has-text-justified">
+          <p>
+            REGEN synthesizes pseudo-demonstrations for previously learned tasks by recursively
+            rolling out the world action model. These generated trajectories are then used as replay
+            signals during continual adaptation.
+          </p>
+        </div>
+
+        <div class="columns is-multiline regen-example-grid">
+          <div class="column is-3-desktop is-6-tablet">
+            <div class="regen-example-card">
+              <video controls muted loop playsinline>
+                <source src="./static/REGEN-Examples/2026_04_27-04_47_04--episode=77--success=True--task=turn_on_the_stove.mp4" type="video/mp4">
+              </video>
+              <p class="regen-example-caption">Turn on the stove</p>
+            </div>
+          </div>
+
+          <div class="column is-3-desktop is-6-tablet">
+            <div class="regen-example-card">
+              <video controls muted loop playsinline>
+                <source src="./static/REGEN-Examples/2026_04_29-14_18_40--episode=1--success=True--task=put_the_bowl_on_the_plate.mp4" type="video/mp4">
+              </video>
+              <p class="regen-example-caption">Put the bowl on the plate</p>
+            </div>
+          </div>
+
+          <div class="column is-3-desktop is-6-tablet">
+            <div class="regen-example-card">
+              <video controls muted loop playsinline>
+                <source src="./static/REGEN-Examples/2026_05_09-03_37_57--episode=30--success=True--task=push_the_plate_to_the_front_of_the_stove.mp4" type="video/mp4">
+              </video>
+              <p class="regen-example-caption">Push plate to front of stove</p>
+            </div>
+          </div>
+
+          <div class="column is-3-desktop is-6-tablet">
+            <div class="regen-example-card">
+              <video controls muted loop playsinline>
+                <source src="./static/REGEN-Examples/2026_05_11-02_41_07--episode=59--success=True--task=pick_up_the_tomato_sauce_and_place_it_in.mp4" type="video/mp4">
+              </video>
+              <p class="regen-example-caption">Pick tomato sauce and place</p>
+            </div>
+          </div>
+
+          <div class="column is-3-desktop is-6-tablet">
+            <div class="regen-example-card">
+              <video controls muted loop playsinline>
+                <source src="./static/REGEN-Examples/2026_05_21-06_32_05--episode=54--success=True--task=pick_up_the_black_bowl_on_the_ramekin_an.mp4" type="video/mp4">
+              </video>
+              <p class="regen-example-caption">Pick black bowl on ramekin</p>
+            </div>
+          </div>
+
+          <div class="column is-3-desktop is-6-tablet">
+            <div class="regen-example-card">
+              <video controls muted loop playsinline>
+                <source src="./static/REGEN-Examples/2026_05_23-01_13_50--episode=10--success=True--task=put_the_carrot_in_the_bowl.mp4" type="video/mp4">
+              </video>
+              <p class="regen-example-caption">Put the carrot in the bowl</p>
+            </div>
+          </div>
+
+          <div class="column is-3-desktop is-6-tablet">
+            <div class="regen-example-card">
+              <video controls muted loop playsinline>
+                <source src="./static/REGEN-Examples/2026_05_23-21_58_58--episode=8--success=True--task=put_the_carrot_on_the_plate.mp4" type="video/mp4">
+              </video>
+              <p class="regen-example-caption">Put the carrot on the plate</p>
+            </div>
+          </div>
+
+          <div class="column is-3-desktop is-6-tablet">
+            <div class="regen-example-card">
+              <video controls muted loop playsinline>
+                <source src="./static/REGEN-Examples/2026_05_25-15_32_40--episode=85--success=True--task=pick_up_the_black_bowl_next_to_the_plate.mp4" type="video/mp4">
+              </video>
+              <p class="regen-example-caption">Pick black bowl next to plate</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -206,7 +300,7 @@ permalink: /REGEN/
                   <tr><td>Seq-FT</td><td>92.7</td><td>82.6</td><td>24.9</td></tr>
                   <tr><td>ER</td><td>95.7</td><td>4.8</td><td>93.4</td></tr>
                   <tr><td>RAR</td><td>96.9</td><td>3.0</td><td>95.2</td></tr>
-                  <tr><td><b>Ours (REGEN)</b></td><td><b>95.3</b></td><td><b>26.1</b></td><td><b>65.5</b></td></tr>
+                  <tr><td><b>REGEN (Ours)</b></td><td><b>95.3</b></td><td><b>26.1</b></td><td><b>65.5</b></td></tr>
                 </tbody>
               </table>
             </div>
@@ -228,7 +322,7 @@ permalink: /REGEN/
                   <tr><td>Seq-FT</td><td>90.6</td><td>100</td><td>10.3</td></tr>
                   <tr><td>ER</td><td>94.0</td><td>7.2</td><td>92.4</td></tr>
                   <tr><td>RAR</td><td>92.8</td><td>15.4</td><td>82.6</td></tr>
-                  <tr><td><b>Ours (REGEN)</b></td><td><b>90.6</b></td><td><b>44.9</b></td><td><b>40.8</b></td></tr>
+                  <tr><td><b>REGEN (Ours)</b></td><td><b>90.6</b></td><td><b>44.9</b></td><td><b>40.8</b></td></tr>
                 </tbody>
               </table>
             </div>
@@ -256,16 +350,7 @@ permalink: /REGEN/
         </div>
         <p class="has-text-centered is-italic">&dagger; uses object configurations sampled from previous tasks during replay generation.</p>
 
-        <h3 class="title is-4" style="margin-top: 2rem;">VLA vs. WAM Continual Learning</h3>
-        <div class="content has-text-justified">
-          <p>
-            We compare REGEN against &pi;0.5, a state-of-the-art VLA pretrained on large-scale
-            robotic data, on LIBERO-Goal. Despite &pi;0.5's significantly larger pretraining
-            dataset, catastrophic forgetting persists. REGEN achieves stronger retention by
-            leveraging WAM's joint action-observation generative modeling.
-          </p>
-        </div>
-
+      
         <div class="table-container">
           <table class="table is-bordered is-striped is-fullwidth">
             <thead>
@@ -311,35 +396,85 @@ permalink: /REGEN/
           </table>
         </div>
 
-        <h3 class="title is-4" style="margin-top: 2rem;">Qualitative Results</h3>
-        <div class="content has-text-justified">
-          <p>Demonstration videos of REGEN in simulation and real-world settings coming soon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="qualitative-results">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Qualitative Results</h2>
+        <div class="content has-text-left">
+          <h4 class="title is-5">Task 1: Open Drawer</h4>
+        </div>
+        <div class="columns is-vcentered is-mobile" style="margin-bottom: 1rem;">
+          <div class="column has-text-centered">
+            <p><b>Seq-FT</b></p>
+            <img src="./static/videos/4-0-moto-open_drawer-succ.gif" alt="Seq-FT open drawer" style="width:100%; border-radius:10px;">
+          </div>
+          <div class="column has-text-centered">
+            <p><b>RAR</b></p>
+            <img src="./static/videos/3-4-uniliact-open_drawer-succ.gif" alt="RAR open drawer" style="width:100%; border-radius:10px;">
+          </div>
+          <div class="column has-text-centered">
+            <p><b>REGEN (Ours)</b></p>
+            <img src="./static/videos/4-0-unilact-open_drawer-succ.gif" alt="REGEN open drawer" style="width:100%; border-radius:10px;">
+          </div>
         </div>
 
-        <div class="columns is-multiline">
-          <div class="column is-half">
-            <div class="interpolation-panel" style="padding: 1rem;">
-              <p><b>Demo: LIBERO-Object Task Sequence</b></p>
-              <p>REGEN generating pseudo-trajectories across a 4-stage task sequence.</p>
-            </div>
+        <div class="content has-text-left">
+          <h4 class="title is-5">Task 2: Turn On LED</h4>
+        </div>
+        <div class="columns is-vcentered is-mobile" style="margin-bottom: 1rem;">
+          <div class="column has-text-centered">
+            <p><b>Seq-FT</b></p>
+            <img src="./static/videos/23-0-moto-turn_on_led-fail.gif" alt="Seq-FT turn on LED" style="width:100%; border-radius:10px;">
           </div>
-          <div class="column is-half">
-            <div class="interpolation-panel" style="padding: 1rem;">
-              <p><b>Demo: LIBERO-Goal Task Sequence</b></p>
-              <p>Policy retention on previously learned tasks after continual adaptation.</p>
-            </div>
+          <div class="column has-text-centered">
+            <p><b>RAR</b></p>
+            <img src="./static/videos/21-0-moto-move_slider_right-fail.gif" alt="RAR turn on LED" style="width:100%; border-radius:10px;">
           </div>
-          <div class="column is-half">
-            <div class="interpolation-panel" style="padding: 1rem;">
-              <p><b>Demo: Real-world T1 &rarr; T2 &rarr; T3</b></p>
-              <p>xArm7 performing pick-and-place after sequential continual learning.</p>
-            </div>
+          <div class="column has-text-centered">
+            <p><b>REGEN (Ours)</b></p>
+            <img src="./static/videos/23-0-unilact-turn_on_led-succ.gif" alt="REGEN turn on LED" style="width:100%; border-radius:10px;">
           </div>
-          <div class="column is-half">
-            <div class="interpolation-panel" style="padding: 1rem;">
-              <p><b>Demo: Generated Pseudo-Trajectories</b></p>
-              <p>Raw WAM outputs used as replay: synthetic trajectories without stored data.</p>
-            </div>
+        </div>
+
+        <div class="content has-text-left">
+          <h4 class="title is-5">Task 3: Place Block in Slider</h4>
+        </div>
+        <div class="columns is-vcentered is-mobile" style="margin-bottom: 1rem;">
+          <div class="column has-text-centered">
+            <p><b>Seq-FT</b></p>
+            <img src="./static/videos/3-2-moto_place_in_slider-fail.gif" alt="Seq-FT place block in slider" style="width:100%; border-radius:10px;">
+          </div>
+          <div class="column has-text-centered">
+            <p><b>RAR</b></p>
+            <img src="./static/videos/35-0-moto-lift_red_block_slider-fail.gif" alt="RAR place block in slider" style="width:100%; border-radius:10px;">
+          </div>
+          <div class="column has-text-centered">
+            <p><b>REGEN (Ours)</b></p>
+            <img src="./static/videos/3-2-unilact-place_in_slider-succ.gif" alt="REGEN place block in slider" style="width:100%; border-radius:10px;">
+          </div>
+        </div>
+
+        <div class="content has-text-left">
+          <h4 class="title is-5">Task 4: Turn Off Light Bulb</h4>
+        </div>
+        <div class="columns is-vcentered is-mobile">
+          <div class="column has-text-centered">
+            <p><b>Seq-FT</b></p>
+            <img src="./static/videos/36-1-moto-turn_off_lightbulb-fail.gif" alt="Seq-FT turn off light bulb" style="width:100%; border-radius:10px;">
+          </div>
+          <div class="column has-text-centered">
+            <p><b>RAR</b></p>
+            <img src="./static/videos/37-0-moto-turn_off_lightbulb-fail.gif" alt="RAR turn off light bulb" style="width:100%; border-radius:10px;">
+          </div>
+          <div class="column has-text-centered">
+            <p><b>REGEN (Ours)</b></p>
+            <img src="./static/videos/36-1-unilact-turn_off_lightbulb-succ.gif" alt="REGEN turn off light bulb" style="width:100%; border-radius:10px;">
           </div>
         </div>
       </div>
@@ -376,7 +511,6 @@ permalink: /REGEN/
   </div>
 </footer> -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script src="./static/js/regen-pdf.js"></script>
+<script src="./static/js/regen-videos.js"></script>
 </body>
 </html>
