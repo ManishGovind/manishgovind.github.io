@@ -85,7 +85,7 @@
 <section class="hero is-light is-small regen-tldr">
   <div class="hero-body">
     <div class="container is-max-desktop">
-      <div class="content has-text-centered">
+      <div class="content regen-tldr-content">
         <p><strong>TL;DR:</strong> REGEN leverages a World Action Model's own generative capabilities to synthesize pseudo-demonstrations of previous tasks, eliminating the need for any stored replay buffer while substantially reducing catastrophic forgetting.</p>
       </div>
     </div>
@@ -170,9 +170,7 @@
         <h3 class="title is-4">Pseudo Demos Generated in REGEN</h3>
         <div class="content has-text-justified">
           <p>
-            REGEN synthesizes pseudo-demonstrations for previously learned tasks by recursively
-            rolling out the world action model. These generated trajectories are then used as replay
-            signals during continual adaptation.
+            REGEN synthesizes pseudo-demonstrations for previously learned tasks by recursively rolling out the WAM itself. These generated trajectories are then used as replays during continual learning adaptation.
           </p>
         </div>
 
@@ -604,12 +602,12 @@
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
+    <h2 class="title">Citation</h2>
     <pre><code>@article{govind2026regen,
-  title={World Action Models Enable Continual Imitation Learning with Generative Replays},
+  title={World Action Models Enable Continual Imitation Learning with Recurrent Generative Replays},
   author={Govind, Manish Kumar and Reilly, Dominick and Patel, Smit and Le, Hieu and Das, Srijan},
-  booktitle={},
   year={2026}
+  journal={arXiv preprint}
 }</code></pre>
   </div>
 </section>
