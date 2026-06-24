@@ -209,15 +209,20 @@ body {
 .regen-qual-cell {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .regen-qual-cell .regen-example-card {
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+  padding: 0.35rem;
   height: auto;
 }
 
 .regen-qual-mark-slot {
-  min-height: 2.25rem;
-  margin-top: 0.5rem;
+  min-height: 1.75rem;
+  margin-top: 0.35rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -289,4 +294,12 @@ body {
 .regen-table-footnote {
   margin-top: 0.75rem;
   font-size: 0.9rem;
+}
+
+.regen-er-row {
+  background-color: #f0f0f0;
+}
+
+.regen-er-row td {
+  background-color: #f0f0f092;
 }

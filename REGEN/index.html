@@ -259,13 +259,15 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-12">
-        <h3 class="title is-4">LIBERO Simulation Results</h3>
+        <h3 class="title is-4">Continual Learning Performance</h3>
+        <div class="content has-text-left">
+          <h4 class="title is-4" style="margin-top: 2rem; ">Libero Simulation Benchmark</h3>
+          </div>
         <div class="content has-text-justified">
           <p>
             We evaluate REGEN on three LIBERO benchmark suites against Sequential Fine-Tuning
             (Seq-FT), Seq-LoRA, Experience Replay (ER, upper bound), EWC, PackNet, and
-            Rollouts-as-Replay (RAR). ER is treated as a privileged reference since it assumes
-            access to stored demonstrations. Higher FWT and AUC are better; lower NBT is better.
+            Rollouts-as-Replay (RAR). Higher FWT and AUC are better; lower NBT is better.
           </p>
         </div>
 
@@ -290,16 +292,15 @@
                 </thead>
                 <tbody>
                   <tr><td>Seq-FT</td><td>92.7</td><td>82.6</td><td>24.9</td><td>90.6</td><td>100</td><td>10.3</td></tr>
-                  <tr><td>Seq-LoRA</td><td>95.7</td><td>4.8</td><td>93.4</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-                  <tr><td>ER</td><td>95.7</td><td>4.8</td><td>93.4</td><td>94.0</td><td>7.2</td><td>92.4</td></tr>
-                  <tr><td>EWC</td><td>95.7</td><td>4.8</td><td>93.4</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-                  <tr><td>PackNet</td><td>95.7</td><td>4.8</td><td>93.4</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+                  <tr><td>Seq-LoRA</td><td>93.5</td><td>99.9</td><td>11.1</td><td>83</td><td>99.6</td><td>9.3</td></tr>
+                  <tr><td>EWC</td><td>94.9</td><td>87.5</td><td>25.1</td><td>83.6</td><td>99.4</td><td>9.9</td></tr>
+                  <tr><td>PackNet</td><td>95.5</td><td>99.7</td><td>11.5</td><td>92</td><td>100</td><td>10.5</td></tr>
+                  <tr class="regen-er-row"><td>ER</td><td>95.7</td><td>4.8</td><td>93.4</td><td>94.0</td><td>7.2</td><td>92.4</td></tr>
                   <tr><td>RAR</td><td>96.9</td><td>3.0</td><td>95.2</td><td>92.8</td><td>15.4</td><td>82.6</td></tr>
-                  <tr><td><b>REGEN (Ours)</b></td><td><b>95.3</b></td><td><b>26.1</b></td><td><b>65.5</b></td><td><b>90.6</b></td><td><b>44.9</b></td><td><b>40.8</b></td></tr>
+                  <tr><td><b>REGEN (Ours)</b></td><td>95.3</td><td>26.1</td><td>65.5</td><td>90.6</td><td>44.9</td><td>40.8</td></tr>
                 </tbody>
               </table>
             </div>
-            <p class="has-text-centered is-italic">LIBERO-Object &amp; Goal</p>
           </div>
 
           <div class="column is-5">
@@ -307,7 +308,10 @@
               <table class="table is-bordered is-striped is-fullwidth regen-results-table">
                 <thead>
                   <tr>
-                    <th>Method</th>
+                    <th rowspan="2">Method</th>
+                    <th colspan="3">LIBERO-Spatial</th>
+                  </tr>
+                  <tr>
                     <th>FWT &uarr;</th>
                     <th>NBT &darr;</th>
                     <th>AUC &uarr;</th>
@@ -315,46 +319,29 @@
                 </thead>
                 <tbody>
                   <tr><td>Seq-FT</td><td>87.4</td><td>99.8</td><td>10.8</td></tr>
-                  <tr><td>Seq-LoRA</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-                  <tr><td>ER</td><td>86.4</td><td>-0.28</td><td>87.8</td></tr>
-                  <tr><td>EWC</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-                  <tr><td>PackNet</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
-                  <tr><td>RAR</td><td>87.0</td><td>-0.02</td><td>85.8</td></tr>
-                  <tr><td><b>REGEN (Ours)&dagger;</b></td><td><b>87.2</b></td><td><b>17.6</b></td><td><b>76.9</b></td></tr>
+                  <tr><td>Seq-LoRA</td><td>80</td><td>99.6</td><td>8.9</td></tr>
+                  <tr><td>EWC</td><td>86.4</td><td>99.9</td><td>10.3</td></tr>
+                  <tr><td>PackNet</td><td>87.2</td><td>100</td><td>10.4</td></tr>
+                  <tr class="regen-er-row"><td>ER</td><td>86.4</td><td>-0.28</td><td>87.8</td></tr>
+                  <tr><td>RAR</td><td>87</td><td>-0.02</td><td>85.8</td></tr>
+                  <tr><td><b>REGEN (Ours)&dagger;</b></td><td>87.2</td><td>17.6</td><td>76.9</td></tr>
                 </tbody>
               </table>
             </div>
-            <p class="has-text-centered is-italic">LIBERO-Spatial</p>
           </div>
         </div>
         <p class="has-text-centered is-italic regen-table-footnote">&dagger; uses object configurations sampled from previous tasks during replay generation.</p>
 
       
-        <div class="table-container">
-          <table class="table is-bordered is-striped is-fullwidth">
-            <thead>
-              <tr>
-                <th>Policy</th>
-                <th>Method</th>
-                <th>FWT &uarr;</th>
-                <th>NBT &darr;</th>
-                <th>AUC &uarr;</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>&pi;0.5</td><td>Seq-FT</td><td>96.8</td><td>88</td><td>35.5</td></tr>
-              <tr><td>Cosmos-Policy</td><td>Seq-FT</td><td>90.6</td><td>100</td><td>10.3</td></tr>
-              <tr><td>Cosmos-Policy</td><td><b>Ours (REGEN)</b></td><td><b>90.6</b></td><td><b>38.7</b></td><td><b>40.8</b></td></tr>
-            </tbody>
-          </table>
+       
+       
+        <div class="content has-text-left">
+        <h4 class="title is-4" style="margin-top: 2rem; ">Real-World Manipulation</h4>
         </div>
-
-        <h3 class="title is-4" style="margin-top: 2rem;">Real-World Manipulation</h3>
         <div class="content has-text-justified">
           <p>
-            We evaluate REGEN on a real xArm7 manipulator across three sequential pick-and-place
-            tasks: Put carrot in bowl (T1), Put carrot on plate (T2), and Put eggplant in bowl
-            (T3). Each policy is evaluated over 10 randomized trials per task.
+            We evaluate continual learning performance of REGEN in real-world environment across three sequential pick-and-place
+            tasks: Put carrot in bowl (T1), Put carrot on plate (T2), and Put eggplant in bowl (T3).
           </p>
         </div>
 
@@ -374,6 +361,25 @@
             </tbody>
           </table>
         </div>
+
+        <!-- <div class="table-container">
+          <table class="table is-bordered is-striped is-fullwidth">
+            <thead>
+              <tr>
+                <th>Policy</th>
+                <th>Method</th>
+                <th>FWT &uarr;</th>
+                <th>NBT &darr;</th>
+                <th>AUC &uarr;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>&pi;0.5</td><td>Seq-FT</td><td>96.8</td><td>88</td><td>35.5</td></tr>
+              <tr><td>Cosmos-Policy</td><td>Seq-FT</td><td>90.6</td><td>100</td><td>10.3</td></tr>
+              <tr><td>Cosmos-Policy</td><td><b>Ours (REGEN)</b></td><td><b>90.6</b></td><td><b>38.7</b></td><td><b>40.8</b></td></tr>
+            </tbody>
+          </table>
+        </div> -->
 
       </div>
     </div>
