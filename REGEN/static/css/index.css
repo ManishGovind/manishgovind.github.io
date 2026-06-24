@@ -74,17 +74,30 @@ body {
 
 /* TL;DR */
 .regen-tldr {
-  background: var(--regen-accent-soft) !important;
-  border-top: 1px solid #cfe0f5;
-  border-bottom: 1px solid #cfe0f5;
+  background: transparent !important;
+  border: none;
+}
+
+.regen-tldr .hero-body {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.regen-tldr .content {
+  max-width: 46rem;
+  margin: 0 auto;
+  text-align: left;
+  background: var(--regen-surface-alt);
+  border-left: 4px solid var(--regen-accent);
+  border-radius: 0 10px 10px 0;
+  padding: 0.85rem 1.1rem;
 }
 
 .regen-tldr .content p {
-  color: var(--regen-heading);
-  font-size: 1.02rem;
+  color: var(--regen-text-muted);
+  font-size: 0.98rem;
   line-height: 1.6;
-  max-width: 46rem;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .regen-tldr strong {
