@@ -1,7 +1,175 @@
 body {
   font-family: 'Noto Sans', sans-serif;
+  color: var(--regen-text);
+  background: var(--regen-bg);
+  line-height: 1.65;
 }
 
+.regen-page {
+  --regen-bg: #f7f9fc;
+  --regen-surface: #ffffff;
+  --regen-surface-alt: #eef3fa;
+  --regen-text: #1f2937;
+  --regen-text-muted: #5b6574;
+  --regen-heading: #14243d;
+  --regen-accent: #1d5bb8;
+  --regen-accent-soft: #e8f1fc;
+  --regen-accent-2: #0f766e;
+  --regen-border: #d8e2ef;
+  --regen-shadow: 0 8px 28px rgba(20, 36, 61, 0.08);
+}
+
+/* Hero */
+.regen-page > .hero:not(.regen-tldr) {
+  background: linear-gradient(165deg, #ffffff 0%, #f0f5fc 55%, #e9f0fa 100%);
+  border-bottom: 1px solid var(--regen-border);
+}
+
+.regen-page > .hero:not(.regen-tldr) .hero-body {
+  padding-top: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+.publication-title {
+  font-family: 'Google Sans', sans-serif;
+  color: var(--regen-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  max-width: 52rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.publication-authors {
+  font-family: 'Google Sans', sans-serif;
+  color: var(--regen-text-muted);
+}
+
+.publication-authors a,
+.publication-authors .author-name {
+  color: var(--regen-accent) !important;
+  font-weight: 500;
+}
+
+.publication-authors a:hover {
+  color: var(--regen-accent-2) !important;
+  text-decoration: underline;
+}
+
+.publication-links .button.is-dark {
+  background: linear-gradient(135deg, #1a3f6e 0%, var(--regen-accent) 100%);
+  border: none;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 14px rgba(29, 91, 184, 0.28);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.publication-links .button.is-dark:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(29, 91, 184, 0.34);
+  background: linear-gradient(135deg, #1a3f6e 0%, #2a6fd4 100%);
+}
+
+/* TL;DR */
+.regen-tldr {
+  background: var(--regen-accent-soft) !important;
+  border-top: 1px solid #cfe0f5;
+  border-bottom: 1px solid #cfe0f5;
+}
+
+.regen-tldr .content p {
+  color: var(--regen-heading);
+  font-size: 1.02rem;
+  line-height: 1.6;
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.regen-tldr strong {
+  color: var(--regen-accent);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+}
+
+/* Sections */
+.regen-page .section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.regen-page .section:nth-of-type(even) {
+  background: var(--regen-surface);
+}
+
+.regen-page .section:nth-of-type(odd):not(.hero) {
+  background: transparent;
+}
+
+.regen-page .section .title.is-3 {
+  font-family: 'Google Sans', sans-serif;
+  color: var(--regen-heading);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.regen-page .section .title.is-3::after {
+  content: '';
+  display: block;
+  width: 3.25rem;
+  height: 0.2rem;
+  margin: 0.65rem auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--regen-accent), var(--regen-accent-2));
+}
+
+.regen-page .section .title.is-4 {
+  font-family: 'Google Sans', sans-serif;
+  color: var(--regen-heading);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.regen-subsection-title {
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+  text-align: left;
+  font-size: 1.15rem !important;
+  color: var(--regen-accent) !important;
+}
+
+.regen-page .section .title.is-5 {
+  font-family: 'Google Sans', sans-serif;
+  color: var(--regen-accent);
+  font-weight: 600;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.regen-page .content.has-text-justified p,
+.regen-page .content p {
+  color: var(--regen-text);
+}
+
+.regen-page .content.has-text-justified {
+  font-size: 1.02rem;
+}
+
+.regen-page #BibTeX pre {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 10px;
+  padding: 1.25rem;
+  font-size: 0.88rem;
+  box-shadow: var(--regen-shadow);
+}
 
 .footer .icon-link {
     font-size: 25px;
@@ -28,13 +196,8 @@ body {
 }
 
 
-.publication-title {
-}
-
-
 .publication-banner {
   max-height: parent;
-
 }
 
 .publication-banner video {
@@ -46,14 +209,6 @@ body {
 }
 
 .publication-header .hero-body {
-}
-
-.publication-title {
-    font-family: 'Google Sans', sans-serif;
-}
-
-.publication-authors {
-    font-family: 'Google Sans', sans-serif;
 }
 
 .publication-venue {
@@ -68,27 +223,11 @@ body {
     font-weight: bolder;
 }
 
-.publication-authors {
-}
-
-.publication-authors a,
-.publication-authors .author-name {
-   color: hsl(204, 86%, 53%) !important;
-}
-
-.publication-authors a:hover {
-    text-decoration: underline;
-}
-
 .author-block {
   display: inline-block;
 }
 
 .publication-banner img {
-}
-
-.publication-authors {
-  /*color: #4286f4;*/
 }
 
 .publication-video {
@@ -163,10 +302,12 @@ body {
 }
 
 .regen-example-card {
-  background: #f5f5f5;
-  border-radius: 10px;
+  background: var(--regen-surface);
+  border: 1px solid var(--regen-border);
+  border-radius: 12px;
   padding: 0.5rem;
   height: 100%;
+  box-shadow: var(--regen-shadow);
 }
 
 .regen-example-card video {
@@ -188,7 +329,11 @@ body {
   max-width: 90%;
   margin: 0 auto 1.25rem;
   font-size: 0.98rem;
-  color: #444;
+  color: var(--regen-text-muted);
+  background: var(--regen-surface-alt);
+  border-left: 4px solid var(--regen-accent);
+  border-radius: 0 10px 10px 0;
+  padding: 0.85rem 1.1rem;
 }
 
 .regen-qual-grid {
@@ -283,6 +428,24 @@ body {
 
 .regen-results-table {
   font-size: 0.82rem;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--regen-shadow);
+}
+
+.regen-results-table thead th {
+  background: #1a3358;
+  color: #f8fafc;
+  border-color: #2a4570 !important;
+  font-weight: 600;
+}
+
+.regen-results-table tbody td {
+  border-color: var(--regen-border) !important;
+}
+
+.regen-results-table tbody tr:nth-child(even):not(.regen-er-row) {
+  background: #f8fbff;
 }
 
 .regen-results-table th,
@@ -297,9 +460,10 @@ body {
 }
 
 .regen-er-row {
-  background-color: #f0f0f0;
+  background-color: #dfeaf8 !important;
 }
 
 .regen-er-row td {
-  background-color: #f0f0f092;
+  background-color: #dfeaf8 !important;
+  font-weight: 500;
 }
