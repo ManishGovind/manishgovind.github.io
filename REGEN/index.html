@@ -48,7 +48,7 @@
             <span class="author-block">
               <a href="https://dominickrei.github.io/">Dominick Reilly</a>,
             </span>
-            <span class="author-block">Smit Patel,</span>
+            <span class="author-block author-name">Smit Patel,</span>
             <span class="author-block">
               <a href="https://hieulem.github.io/">Hieu Le</a>,</span>
             <span class="author-block">
@@ -72,12 +72,6 @@
                 <a href="#" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fab fa-github"></i></span>
                   <span>Code</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="#BibTeX" class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-quote-right"></i></span>
-                  <span>BibTeX</span>
                 </a>
               </span>
             </div>
@@ -151,18 +145,17 @@
             demonstrations.
           </p>
           <p>
-            Generation proceeds in three phases. First, an initialization phase seeds the rollout
+            REGEN involves two phases. First, an initialization phase seeds the rollout
             with one real action chunk from the current task. Second, a recurrent generation phase
             takes over: the model's own predicted future observations are fed back as inputs,
             producing a fully synthetic trajectory without any stored data. Generation terminates
-            either at a maximum horizon or when the WAM's reward head predicts task completion
-            with high confidence.
+            either at a maximum horizon or goal reward function is satisfied.
           </p>
           <p>
             The resulting pseudo-trajectories are combined with the current task's demonstrations
             and used to fine-tune the policy via behavioral cloning. This allows the WAM to
-            simultaneously acquire new skills and rehearse previously learned ones, using only
-            its own generative outputs as memory.
+            simultaneously acquire new skills and retain knowledge previously learned ones, using only
+            its own generative replay as memory without storing the original demonstrations.
           </p>
         </div>
       </div>
@@ -174,8 +167,6 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-12">
-        <h2 class="title is-3">Visualization</h2>
-
         <h3 class="title is-4">Pseudo Demos Generated in REGEN</h3>
         <div class="content has-text-justified">
           <p>
@@ -218,7 +209,7 @@
               <video controls muted loop playsinline>
                 <source src="./static/REGEN-Examples/2026_05_11-02_41_07--episode=59--success=True--task=pick_up_the_tomato_sauce_and_place_it_in.mp4" type="video/mp4">
               </video>
-              <p class="regen-example-caption">Pick tomato sauce and place</p>
+              <p class="regen-example-caption">Pick the tomato sauce and place it in the basket</p>
             </div>
           </div>
 
@@ -227,7 +218,7 @@
               <video controls muted loop playsinline>
                 <source src="./static/REGEN-Examples/2026_05_21-06_32_05--episode=54--success=True--task=pick_up_the_black_bowl_on_the_ramekin_an.mp4" type="video/mp4">
               </video>
-              <p class="regen-example-caption">Pick black bowl on ramekin</p>
+              <p class="regen-example-caption">Pick black bowl on ramekin and place it on the plate</p>
             </div>
           </div>
 
@@ -267,23 +258,53 @@
 <section class="section" id="results">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Results</h2>
-
+      <div class="column is-12">
         <h3 class="title is-4">LIBERO Simulation Results</h3>
         <div class="content has-text-justified">
           <p>
             We evaluate REGEN on three LIBERO benchmark suites against Sequential Fine-Tuning
-            (Seq-FT), Experience Replay (ER, upper bound), and Rollouts-as-Replay (RAR). ER is
-            treated as a privileged reference since it assumes access to stored demonstrations.
-            Higher FWT and AUC are better; lower NBT is better.
+            (Seq-FT), Seq-LoRA, Experience Replay (ER, upper bound), EWC, PackNet, and
+            Rollouts-as-Replay (RAR). ER is treated as a privileged reference since it assumes
+            access to stored demonstrations. Higher FWT and AUC are better; lower NBT is better.
           </p>
         </div>
 
-        <div class="columns">
-          <div class="column">
+        <div class="columns regen-libero-tables">
+          <div class="column is-7">
             <div class="table-container">
-              <table class="table is-bordered is-striped is-fullwidth">
+              <table class="table is-bordered is-striped is-fullwidth regen-results-table">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Method</th>
+                    <th colspan="3">LIBERO-Object</th>
+                    <th colspan="3">LIBERO-Goal</th>
+                  </tr>
+                  <tr>
+                    <th>FWT &uarr;</th>
+                    <th>NBT &darr;</th>
+                    <th>AUC &uarr;</th>
+                    <th>FWT &uarr;</th>
+                    <th>NBT &darr;</th>
+                    <th>AUC &uarr;</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Seq-FT</td><td>92.7</td><td>82.6</td><td>24.9</td><td>90.6</td><td>100</td><td>10.3</td></tr>
+                  <tr><td>Seq-LoRA</td><td>95.7</td><td>4.8</td><td>93.4</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+                  <tr><td>ER</td><td>95.7</td><td>4.8</td><td>93.4</td><td>94.0</td><td>7.2</td><td>92.4</td></tr>
+                  <tr><td>EWC</td><td>95.7</td><td>4.8</td><td>93.4</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+                  <tr><td>PackNet</td><td>95.7</td><td>4.8</td><td>93.4</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+                  <tr><td>RAR</td><td>96.9</td><td>3.0</td><td>95.2</td><td>92.8</td><td>15.4</td><td>82.6</td></tr>
+                  <tr><td><b>REGEN (Ours)</b></td><td><b>95.3</b></td><td><b>26.1</b></td><td><b>65.5</b></td><td><b>90.6</b></td><td><b>44.9</b></td><td><b>40.8</b></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="has-text-centered is-italic">LIBERO-Object &amp; Goal</p>
+          </div>
+
+          <div class="column is-5">
+            <div class="table-container">
+              <table class="table is-bordered is-striped is-fullwidth regen-results-table">
                 <thead>
                   <tr>
                     <th>Method</th>
@@ -293,58 +314,20 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td>Seq-FT</td><td>92.7</td><td>82.6</td><td>24.9</td></tr>
-                  <tr><td>ER</td><td>95.7</td><td>4.8</td><td>93.4</td></tr>
-                  <tr><td>RAR</td><td>96.9</td><td>3.0</td><td>95.2</td></tr>
-                  <tr><td><b>REGEN (Ours)</b></td><td><b>95.3</b></td><td><b>26.1</b></td><td><b>65.5</b></td></tr>
+                  <tr><td>Seq-FT</td><td>87.4</td><td>99.8</td><td>10.8</td></tr>
+                  <tr><td>Seq-LoRA</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+                  <tr><td>ER</td><td>86.4</td><td>-0.28</td><td>87.8</td></tr>
+                  <tr><td>EWC</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+                  <tr><td>PackNet</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+                  <tr><td>RAR</td><td>87.0</td><td>-0.02</td><td>85.8</td></tr>
+                  <tr><td><b>REGEN (Ours)&dagger;</b></td><td><b>87.2</b></td><td><b>17.6</b></td><td><b>76.9</b></td></tr>
                 </tbody>
               </table>
             </div>
-            <p class="has-text-centered is-italic">LIBERO-Object</p>
-          </div>
-
-          <div class="column">
-            <div class="table-container">
-              <table class="table is-bordered is-striped is-fullwidth">
-                <thead>
-                  <tr>
-                    <th>Method</th>
-                    <th>FWT &uarr;</th>
-                    <th>NBT &darr;</th>
-                    <th>AUC &uarr;</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr><td>Seq-FT</td><td>90.6</td><td>100</td><td>10.3</td></tr>
-                  <tr><td>ER</td><td>94.0</td><td>7.2</td><td>92.4</td></tr>
-                  <tr><td>RAR</td><td>92.8</td><td>15.4</td><td>82.6</td></tr>
-                  <tr><td><b>REGEN (Ours)</b></td><td><b>90.6</b></td><td><b>44.9</b></td><td><b>40.8</b></td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p class="has-text-centered is-italic">LIBERO-Goal</p>
+            <p class="has-text-centered is-italic">LIBERO-Spatial</p>
           </div>
         </div>
-
-        <div class="table-container" style="margin-top: 1.5rem;">
-          <table class="table is-bordered is-striped is-fullwidth">
-            <thead>
-              <tr>
-                <th>Method</th>
-                <th>FWT &uarr;</th>
-                <th>NBT &darr;</th>
-                <th>AUC &uarr;</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Seq-FT</td><td>87.4</td><td>99.8</td><td>10.8</td></tr>
-              <tr><td>ER</td><td>86.4</td><td>-0.28</td><td>87.8</td></tr>
-              <tr><td>RAR</td><td>87.0</td><td>-0.02</td><td>85.8</td></tr>
-              <tr><td><b>Ours (REGEN&dagger;)</b></td><td><b>87.2</b></td><td><b>17.6</b></td><td><b>76.9</b></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="has-text-centered is-italic">&dagger; uses object configurations sampled from previous tasks during replay generation.</p>
+        <p class="has-text-centered is-italic regen-table-footnote">&dagger; uses object configurations sampled from previous tasks during replay generation.</p>
 
       
         <div class="table-container">
@@ -400,79 +383,214 @@
 <section class="section" id="qualitative-results">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div class="column is-12">
         <h2 class="title is-3">Qualitative Results</h2>
-        <div class="content has-text-left">
-          <h4 class="title is-5">Task 1: Open Drawer</h4>
+        <div class="content has-text-justified regen-qual-overview">
+          <p>
+            After adapting to a new task, we evaluate the updated policy on a previously learned task.
+            Seq-FT policy on the previous task demonstrates catastrophic forgetting by executing the current task instead or failing to accomplish the previous task. Policy learned by REGEN successfully performs the previous task, retaining task-relevant behavior.
+            the current task instead or failing to accomplish the previous task. Policy learned by REGEN successfully performs the previous task, retaining task-relevant behavior.
+          </p>
         </div>
-        <div class="columns is-vcentered is-mobile" style="margin-bottom: 1rem;">
-          <div class="column has-text-centered">
-            <p><b>Seq-FT</b></p>
-            <img src="./static/videos/4-0-moto-open_drawer-succ.gif" alt="Seq-FT open drawer" style="width:100%; border-radius:10px;">
-          </div>
-          <div class="column has-text-centered">
-            <p><b>RAR</b></p>
-            <img src="./static/videos/3-4-uniliact-open_drawer-succ.gif" alt="RAR open drawer" style="width:100%; border-radius:10px;">
-          </div>
-          <div class="column has-text-centered">
-            <p><b>REGEN (Ours)</b></p>
-            <img src="./static/videos/4-0-unilact-open_drawer-succ.gif" alt="REGEN open drawer" style="width:100%; border-radius:10px;">
-          </div>
+        <div class="content has-text-left">
+          <h4 class="title is-5">LIBERO-Goal</h4>
         </div>
 
-        <div class="content has-text-left">
-          <h4 class="title is-5">Task 2: Turn On LED</h4>
-        </div>
-        <div class="columns is-vcentered is-mobile" style="margin-bottom: 1rem;">
-          <div class="column has-text-centered">
-            <p><b>Seq-FT</b></p>
-            <img src="./static/videos/23-0-moto-turn_on_led-fail.gif" alt="Seq-FT turn on LED" style="width:100%; border-radius:10px;">
-          </div>
-          <div class="column has-text-centered">
-            <p><b>RAR</b></p>
-            <img src="./static/videos/21-0-moto-move_slider_right-fail.gif" alt="RAR turn on LED" style="width:100%; border-radius:10px;">
-          </div>
-          <div class="column has-text-centered">
-            <p><b>REGEN (Ours)</b></p>
-            <img src="./static/videos/23-0-unilact-turn_on_led-succ.gif" alt="REGEN turn on LED" style="width:100%; border-radius:10px;">
-          </div>
+        <div class="columns regen-qual-header">
+          <div class="column is-4"><p><b>New Task</b></p></div>
+          <div class="column is-4"><p><b>Seq-FT</b></p></div>
+          <div class="column is-4"><p><b>REGEN (Ours)</b></p></div>
         </div>
 
-        <div class="content has-text-left">
-          <h4 class="title is-5">Task 3: Place Block in Slider</h4>
-        </div>
-        <div class="columns is-vcentered is-mobile" style="margin-bottom: 1rem;">
-          <div class="column has-text-centered">
-            <p><b>Seq-FT</b></p>
-            <img src="./static/videos/3-2-moto_place_in_slider-fail.gif" alt="Seq-FT place block in slider" style="width:100%; border-radius:10px;">
+        <!-- Task 1 -->
+        <div class="regen-qual-task">
+          <div class="columns regen-qual-grid">
+            <div class="column is-4">
+              <div class="regen-qual-cell">
+                <div class="regen-example-card">
+                  <video class="regen-qual-video" controls muted loop playsinline>
+                    <source src="./static/Qualitative-results/turn_on_the_stove_demo__demo_0_agentview.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="regen-qual-mark-slot" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="column is-4">
+              <div class="regen-qual-cell">
+                <div class="regen-example-card">
+                  <video class="regen-qual-video" controls muted loop playsinline>
+                    <source src="./static/Qualitative-results/2026_05_03-05_11_23--episode=7--success=False--task=open_the_middle_drawer_of_the_cabinet.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="regen-qual-mark-slot">
+                  <span class="regen-qual-mark regen-qual-mark-fail" aria-label="Failure"><i class="fas fa-times"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="column is-4">
+              <div class="regen-qual-cell">
+                <div class="regen-example-card">
+                  <video class="regen-qual-video" controls muted loop playsinline>
+                    <source src="./static/Qualitative-results/2026_04_27-00_29_52--episode=7--success=True--task=open_the_middle_drawer_of_the_cabinet.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="regen-qual-mark-slot">
+                  <span class="regen-qual-mark regen-qual-mark-pass" aria-label="Success"><i class="fas fa-check"></i></span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="column has-text-centered">
-            <p><b>RAR</b></p>
-            <img src="./static/videos/35-0-moto-lift_red_block_slider-fail.gif" alt="RAR place block in slider" style="width:100%; border-radius:10px;">
-          </div>
-          <div class="column has-text-centered">
-            <p><b>REGEN (Ours)</b></p>
-            <img src="./static/videos/3-2-unilact-place_in_slider-succ.gif" alt="REGEN place block in slider" style="width:100%; border-radius:10px;">
-          </div>
+          <p class="regen-qual-caption"><b>Task:</b> Open the middle drawer of the cabinet</p>
         </div>
 
+        <!-- Task 2 -->
         <div class="content has-text-left">
-          <h4 class="title is-5">Task 4: Turn Off Light Bulb</h4>
+          <h4 class="title is-5">LIBERO-Object</h4>
         </div>
-        <div class="columns is-vcentered is-mobile">
-          <div class="column has-text-centered">
-            <p><b>Seq-FT</b></p>
-            <img src="./static/videos/36-1-moto-turn_off_lightbulb-fail.gif" alt="Seq-FT turn off light bulb" style="width:100%; border-radius:10px;">
-          </div>
-          <div class="column has-text-centered">
-            <p><b>RAR</b></p>
-            <img src="./static/videos/37-0-moto-turn_off_lightbulb-fail.gif" alt="RAR turn off light bulb" style="width:100%; border-radius:10px;">
-          </div>
-          <div class="column has-text-centered">
-            <p><b>REGEN (Ours)</b></p>
-            <img src="./static/videos/36-1-unilact-turn_off_lightbulb-succ.gif" alt="REGEN turn off light bulb" style="width:100%; border-radius:10px;">
-          </div>
+        <div class="columns regen-qual-header">
+          <div class="column is-4"><p><b>New Task</b></p></div>
+          <div class="column is-4"><p><b>Seq-FT</b></p></div>
+          <div class="column is-4"><p><b>REGEN (Ours)</b></p></div>
         </div>
+        <div class="regen-qual-task">
+          <div class="columns regen-qual-grid">
+            <div class="column is-4">
+              <div class="regen-qual-cell">
+                <div class="regen-example-card">
+                  <video class="regen-qual-video" controls muted loop playsinline>
+                    <source src="./static/Qualitative-results/pick_up_the_orange_juice_and_place_it_in_the_basket_demo__demo_1_agentview.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="regen-qual-mark-slot" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="column is-4">
+              <div class="regen-qual-cell">
+                <div class="regen-example-card">
+                  <video class="regen-qual-video" controls muted loop playsinline>
+                    <source src="./static/Qualitative-results/2026_05_13-11_47_03--episode=82--success=False--task=pick_up_the_cream_cheese_and_place_it_in.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="regen-qual-mark-slot">
+                  <span class="regen-qual-mark regen-qual-mark-fail" aria-label="Failure"><i class="fas fa-times"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="column is-4">
+              <div class="regen-qual-cell">
+                <div class="regen-example-card">
+                  <video class="regen-qual-video" controls muted loop playsinline>
+                    <source src="./static/Qualitative-results/2026_05_18-02_38_51--episode=82--success=True--task=pick_up_the_cream_cheese_and_place_it_in.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="regen-qual-mark-slot">
+                  <span class="regen-qual-mark regen-qual-mark-pass" aria-label="Success"><i class="fas fa-check"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="regen-qual-caption"><b>Task:</b> Pick up the cream cheese and place it in the basket</p>
+        </div>
+        
+        <div class="content has-text-left">
+          <h4 class="title is-5">LIBERO-Spatial</h4>
+        </div>
+        <div class="columns regen-qual-header">
+          <div class="column is-4"><p><b>New Task</b></p></div>
+          <div class="column is-4"><p><b>Seq-FT</b></p></div>
+          <div class="column is-4"><p><b>REGEN (Ours)</b></p></div>
+        </div>
+        <!-- Task 3 -->
+        <div class="regen-qual-task">
+          <div class="columns regen-qual-grid">
+            <div class="column is-4">
+              <div class="regen-qual-cell">
+                <div class="regen-example-card">
+                  <video class="regen-qual-video" controls muted loop playsinline>
+                    <source src="./static/Qualitative-results/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo__demo_1_agentview.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="regen-qual-mark-slot" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="column is-4">
+              <div class="regen-qual-cell">
+                <div class="regen-example-card">
+                  <video class="regen-qual-video" controls muted loop playsinline>
+                    <source src="./static/Qualitative-results/2026_05_16-18_00_10--episode=285--success=False--task=pick_up_the_black_bowl_on_the_ramekin_an.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="regen-qual-mark-slot">
+                  <span class="regen-qual-mark regen-qual-mark-fail" aria-label="Failure"><i class="fas fa-times"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="column is-4">
+              <div class="regen-qual-cell">
+                <div class="regen-example-card">
+                  <video class="regen-qual-video" controls muted loop playsinline>
+                    <source src="./static/Qualitative-results/2026_05_23-00_49_24--episode=285--success=True--task=pick_up_the_black_bowl_on_the_ramekin_an.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="regen-qual-mark-slot">
+                  <span class="regen-qual-mark regen-qual-mark-pass" aria-label="Success"><i class="fas fa-check"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="regen-qual-caption"><b>Task:</b> Pick up the black bowl on the ramekin and place it on the plate</p>
+        </div>
+        
+        <div class="content has-text-left">
+          <h4 class="title is-5">Real-World Environment</h4>
+        </div>
+        <div class="columns regen-qual-header">
+          <div class="column is-4"><p><b>New Task</b></p></div>
+          <div class="column is-4"><p><b>Seq-FT</b></p></div>
+          <div class="column is-4"><p><b>REGEN (Ours)</b></p></div>
+        </div>
+        <!-- Task 4 -->
+        <div class="regen-qual-task">
+          <div class="columns regen-qual-grid">
+            <div class="column is-4">
+              <div class="regen-qual-cell">
+                <div class="regen-example-card">
+                  <video class="regen-qual-video" controls muted loop playsinline>
+                    <source src="./static/Qualitative-results/rollout--success=True--model=rgr-clstage2-t3.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="regen-qual-mark-slot" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="column is-4">
+              <div class="regen-qual-cell">
+                <div class="regen-example-card">
+                  <video class="regen-qual-video" controls muted loop playsinline>
+                    <source src="./static/Qualitative-results/rollout--success=False--model=clstage1-seq-ft-t3.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="regen-qual-mark-slot">
+                  <span class="regen-qual-mark regen-qual-mark-fail" aria-label="Failure"><i class="fas fa-times"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="column is-4">
+              <div class="regen-qual-cell">
+                <div class="regen-example-card">
+                  <video class="regen-qual-video" controls muted loop playsinline>
+                    <source src="./static/Qualitative-results/rollout--success=True--model=rgr-clstage1-t3.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="regen-qual-mark-slot">
+                  <span class="regen-qual-mark regen-qual-mark-pass" aria-label="Success"><i class="fas fa-check"></i></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="regen-qual-caption"><b>Task:</b> Pick up the carrot and place it in the plate</p>
+        </div>
+   
+
       </div>
     </div>
   </div>
