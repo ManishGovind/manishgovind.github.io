@@ -82,16 +82,6 @@
   </div>
 </section>
 
-<section class="hero is-light is-small regen-tldr">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="content regen-tldr-content">
-        <p><strong>TL;DR:</strong> REGEN leverages a World Action Model's own generative capabilities to synthesize pseudo-demonstrations of previous tasks, eliminating the need for any stored replay buffer while substantially reducing catastrophic forgetting.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="section" id="abstract">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -115,6 +105,19 @@
             learning without stored demonstrations.
           </p>
         </div>
+
+        <div class="content regen-abstract-teaser">
+          <figure class="image regen-teaser-figure">
+            <img
+              src="./assets/img/REGEN-Teaser-new.png"
+              alt="REGEN teaser overview"
+            >
+          </figure>
+        </div>
+
+        <div class="content regen-tldr-content regen-tldr-inline">
+          <p><strong>TL;DR:</strong> REGEN leverages World Action Model's own generative capabilities to synthesize pseudo-demonstrations of previous tasks, eliminating the need for any stored replay buffer while substantially reducing catastrophic forgetting.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -124,7 +127,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Method</h2>
+        <h2 class="title is-3">Method overview</h2>
 
         <div class="content">
           <figure class="image" style="overflow:hidden; border-radius: 14px;">
@@ -167,7 +170,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-12">
-        <h3 class="title is-4">Pseudo Demos Generated in REGEN</h3>
+        <h3 class="title is-3">REGEN's Generated Pseudo-Demonstrations</h3>
         <div class="content has-text-justified">
           <p>
             REGEN synthesizes pseudo-demonstrations for previously learned tasks by recursively rolling out the WAM itself. These generated trajectories are then used as replays during continual learning adaptation.
@@ -243,7 +246,7 @@
               <video controls muted loop playsinline>
                 <source src="./static/REGEN-Examples/2026_05_25-15_32_40--episode=85--success=True--task=pick_up_the_black_bowl_next_to_the_plate.mp4" type="video/mp4">
               </video>
-              <p class="regen-example-caption">Pick black bowl next to plate</p>
+              <p class="regen-example-caption">Pick up the black bowl next to plate and place it on the plate</p>
             </div>
           </div>
         </div>
@@ -257,7 +260,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-12">
-        <h3 class="title is-4">Continual Learning Performance</h3>
+        <h3 class="title is-3">Continual Learning Performance</h3>
         <div class="content has-text-left">
           <h4 class="title is-4 regen-subsection-title">Libero Simulation Benchmark</h4>
           </div>
@@ -389,7 +392,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-12">
         <h2 class="title is-3">Qualitative Results</h2>
-        <div class="content has-text-justified regen-qual-overview">
+        <div class="content has-text-justified regen-callout regen-qual-overview">
           <p>
             After adapting to a new task, we evaluate the updated policy on a previously learned task.
             Seq-FT policy on the previous task demonstrates catastrophic forgetting by executing the current task instead or failing to accomplish the previous task. Policy learned by REGEN successfully performs the previous task, retaining task-relevant behavior.
@@ -636,13 +639,10 @@
           </div>
         </div>
 
-        <div class="content has-text-justified regen-analysis-text">
+        <div class="content has-text-justified regen-callout regen-analysis-text">
           <p>
             <b>Action representation drift.</b>
-            After the first continual learning stage, we measure how far action latent
-            representations drift from the base policy. Seq-FT shows large drift, consistent with
-            catastrophic forgetting, while ER and REGEN maintain much lower drift despite REGEN
-            using only generated pseudo-trajectories.
+            After the first continual learning stage, action representations under Seq-FT drift heavily from the base policy, consistent with catastrophic forgetting, while ER and REGEN keep representations close to the base, despite REGEN using only generated pseudo-trajectories.
           </p>
           <p>
             <b>Visualization of predicted actions.</b>
@@ -659,12 +659,18 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">Citation</h2>
-    <pre><code>@article{govind2026regen,
+    <div class="regen-bibtex-wrap">
+      <button type="button" class="regen-bibtex-copy" id="bibtex-copy-btn" aria-label="Copy BibTeX to clipboard">
+        <span class="icon is-small"><i class="fas fa-copy" aria-hidden="true"></i></span>
+        <span class="regen-bibtex-copy-label">Copy</span>
+      </button>
+      <pre id="bibtex-block"><code>@article{govind2026regen,
   title={World Action Models Enable Continual Imitation Learning with Recurrent Generative Replays},
   author={Govind, Manish Kumar and Reilly, Dominick and Patel, Smit and Le, Hieu and Das, Srijan},
   year={2026}
   journal={arXiv preprint}
 }</code></pre>
+    </div>
   </div>
 </section>
 
@@ -686,5 +692,6 @@
 </footer> -->
 
 <script src="./static/js/regen-videos.js"></script>
+<script src="./static/js/regen-bibtex.js"></script>
 </body>
 </html>
