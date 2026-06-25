@@ -393,7 +393,6 @@
           <p>
             After adapting to a new task, we evaluate the updated policy on a previously learned task.
             Seq-FT policy on the previous task demonstrates catastrophic forgetting by executing the current task instead or failing to accomplish the previous task. Policy learned by REGEN successfully performs the previous task, retaining task-relevant behavior.
-            the current task instead or failing to accomplish the previous task. Policy learned by REGEN successfully performs the previous task, retaining task-relevant behavior.
           </p>
         </div>
         <div class="content has-text-left">
@@ -595,6 +594,63 @@
         </div>
    
 
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="regen-analysis">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">REGEN Analyses</h2>
+        <div class="content has-text-justified">
+          <p>
+            We further analyze how REGEN preserves the policy's internal representations and
+            behaviors throughout continual learning.
+          </p>
+        </div>
+
+        <div class="columns regen-analysis-figures">
+          <div class="column is-6">
+            <div class="regen-analysis-cell">
+              <div class="regen-analysis-figure-img">
+                <img
+                  src="./assets/img/dist_bars_avg_action_latents.png"
+                  alt="Action representation drift from the base policy"
+                >
+              </div>
+              <p class="regen-analysis-label">Action representation drift</p>
+            </div>
+          </div>
+          <div class="column is-6">
+            <div class="regen-analysis-cell">
+              <div class="regen-analysis-figure-img">
+                <img
+                  src="./assets/img/trajectory_plot.png"
+                  alt="XY-projection of predicted trajectories compared to ground truth"
+                >
+              </div>
+              <p class="regen-analysis-label">XY-projection of trajectories</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content has-text-justified regen-analysis-text">
+          <p>
+            <b>Action representation drift.</b>
+            After the first continual learning stage, we measure how far action latent
+            representations drift from the base policy. Seq-FT shows large drift, consistent with
+            catastrophic forgetting, while ER and REGEN maintain much lower drift despite REGEN
+            using only generated pseudo-trajectories.
+          </p>
+          <p>
+            <b>Visualization of predicted actions.</b>
+            On a previously learned task, Seq-FT rollouts deviate sharply from ground-truth
+            trajectories in the XY plane, while REGEN closely matches ground-truth in both shape
+            and temporal progression.
+          </p>
+        </div>
       </div>
     </div>
   </div>
