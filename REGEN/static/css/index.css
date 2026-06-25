@@ -93,6 +93,58 @@ body {
   padding: 0.85rem 1.1rem;
 }
 
+.regen-tldr-inline {
+  max-width: 46rem;
+  margin: 1.5rem auto 0;
+  text-align: left;
+  background: var(--regen-surface-alt);
+  border-left: 4px solid var(--regen-accent);
+  border-radius: 0 10px 10px 0;
+  padding: 0.85rem 1.1rem;
+}
+
+.regen-tldr-inline p {
+  color: var(--regen-text-muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.regen-tldr-inline strong {
+  color: var(--regen-accent);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+}
+
+.regen-callout {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.98rem;
+  color: var(--regen-text-muted);
+  background: var(--regen-surface-alt);
+  border-left: 4px solid var(--regen-accent);
+  border-radius: 0 10px 10px 0;
+  padding: 0.85rem 1.1rem;
+}
+
+.regen-callout p {
+  color: var(--regen-text-muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.regen-callout p + p {
+  margin-top: 1rem;
+}
+
+.regen-callout b {
+  color: var(--regen-accent);
+  font-weight: 600;
+}
+
 .regen-tldr .content p {
   color: var(--regen-text-muted);
   font-size: 0.98rem;
@@ -180,8 +232,44 @@ body {
   color: #e2e8f0;
   border-radius: 10px;
   padding: 1.25rem;
+  padding-top: 2.75rem;
   font-size: 0.88rem;
   box-shadow: var(--regen-shadow);
+  margin: 0;
+}
+
+.regen-bibtex-wrap {
+  position: relative;
+}
+
+.regen-bibtex-copy {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid rgba(226, 232, 240, 0.35);
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.85);
+  color: #e2e8f0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.4rem 0.65rem;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.regen-bibtex-copy:hover {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: rgba(226, 232, 240, 0.55);
+}
+
+.regen-bibtex-copy.is-copied {
+  color: #86efac;
+  border-color: rgba(134, 239, 172, 0.45);
 }
 
 .footer .icon-link {
@@ -341,12 +429,10 @@ body {
 .regen-qual-overview {
   max-width: 90%;
   margin: 0 auto 1.25rem;
-  font-size: 0.98rem;
-  color: var(--regen-text-muted);
-  background: var(--regen-surface-alt);
-  border-left: 4px solid var(--regen-accent);
-  border-radius: 0 10px 10px 0;
-  padding: 0.85rem 1.1rem;
+}
+
+.regen-analysis-text.regen-callout {
+  margin-top: 1.25rem;
 }
 
 .regen-qual-grid {
@@ -481,6 +567,26 @@ body {
   font-weight: 500;
 }
 
+.regen-abstract-teaser {
+  margin-top: 1.75rem;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.regen-teaser-figure {
+  max-width: 520px;
+  margin: 0;
+}
+
+.regen-teaser-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: none;
+  box-shadow: none;
+}
+
 .regen-analysis-figures {
   margin: 1.25rem 0 1.5rem;
   align-items: stretch;
@@ -530,10 +636,3 @@ body {
   letter-spacing: 0.01em;
 }
 
-.regen-analysis-text {
-  font-size: 1.02rem;
-}
-
-.regen-analysis-text p + p {
-  margin-top: 1rem;
-}

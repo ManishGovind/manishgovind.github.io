@@ -1,8 +1,8 @@
 (function () {
-  const PDF_URL = './assets/img/corl26_method_diag.pdf';
-  const CANVAS_ID = 'method-figure';
+  var WORKER_SRC =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-  function showFallback(canvas, message) {
+  function showFallback(canvas, pdfUrl, message) {
     if (canvas.dataset.fallbackShown === 'true') {
       return;
     }
@@ -12,20 +12,21 @@
       '<p class="has-text-centered" style="margin-top: 1rem;">' +
         (message || 'Unable to load figure.') +
         ' <a href="' +
-        PDF_URL +
+        pdfUrl +
         '" target="_blank" rel="noopener">Open PDF</a></p>'
     );
   }
 
-  function renderPdfPage(pdfjsLib, canvas) {
-    const container = canvas.parentElement;
-    const parentWidth = container.clientWidth || 800;
+  function renderPdfPage(pdfjsLib, canvas, pdfUrl) {
+    var container = canvas.parentElement;
+    var parentWidth = container.clientWidth || 800;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    return pdfjsLib.getDocument(PDF_URL).promise.then(function (pdf) {
+    return pdfjsLib.getDocument(pdfUrl).promise.then(function (pdf) {
       return pdf.getPage(1).then(function (page) {
-        const baseViewport = page.getViewport({ scale: 1 });
-        const scale = (parentWidth / baseViewport.width) * 2;
-        const viewport = page.getViewport({ scale: scale });
+        var baseViewport = page.getViewport({ scale: 1 });
+        var scale = (parentWidth / baseViewport.width) * Math.max(2, dpr);
+        var viewport = page.getViewport({ scale: scale });
 
         canvas.width = viewport.width;
         canvas.height = viewport.height;
@@ -40,41 +41,59 @@
     });
   }
 
-  function init() {
-    const canvas = document.getElementById(CANVAS_ID);
-    const pdfjsLib = window.pdfjsLib;
-
-    if (!canvas) {
+  function initCanvas(pdfjsLib, canvas) {
+    var pdfUrl = canvas.dataset.pdfSrc;
+    if (!pdfUrl) {
       return;
     }
-
-    if (!pdfjsLib) {
-      showFallback(canvas, 'PDF viewer failed to load.');
-      return;
-    }
-
-    pdfjsLib.GlobalWorkerOptions.workerSrc =
-      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
     function tryRender() {
-      const width = canvas.parentElement.clientWidth;
+      var width = canvas.parentElement.clientWidth;
       if (!width) {
         requestAnimationFrame(tryRender);
         return;
       }
 
-      renderPdfPage(pdfjsLib, canvas).catch(function (error) {
-        console.error('REGEN method figure failed to render:', error);
-        showFallback(canvas, 'Figure preview unavailable.');
+      renderPdfPage(pdfjsLib, canvas, pdfUrl).catch(function (error) {
+        console.error('REGEN PDF figure failed to render:', pdfUrl, error);
+        showFallback(canvas, pdfUrl, 'Figure preview unavailable.');
       });
     }
 
     tryRender();
+    return tryRender;
+  }
+
+  function init() {
+    var canvases = document.querySelectorAll('.regen-pdf-canvas[data-pdf-src]');
+    var pdfjsLib = window.pdfjsLib;
+    var renderers = [];
+
+    if (!canvases.length) {
+      return;
+    }
+
+    if (!pdfjsLib) {
+      canvases.forEach(function (canvas) {
+        showFallback(canvas, canvas.dataset.pdfSrc, 'PDF viewer failed to load.');
+      });
+      return;
+    }
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc = WORKER_SRC;
+
+    canvases.forEach(function (canvas) {
+      renderers.push(initCanvas(pdfjsLib, canvas));
+    });
 
     var resizeTimer;
     window.addEventListener('resize', function () {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(tryRender, 200);
+      resizeTimer = setTimeout(function () {
+        renderers.forEach(function (tryRender) {
+          tryRender();
+        });
+      }, 200);
     });
   }
 
