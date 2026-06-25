@@ -1,5 +1,5 @@
 (function () {
-  const PDF_URL = './assets/img/RGR-method.pdf';
+  const PDF_URL = './assets/img/corl26_method_diag.pdf';
   const CANVAS_ID = 'method-figure';
 
   function showFallback(canvas, message) {
