@@ -693,6 +693,20 @@ footer.sticky-bottom {
       margin-bottom: 1rem;
 
       .preview {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .publication-preview-video {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+
+      figure:has(.publication-preview-video) {
+        margin: 0;
       }
 
       .abbr {
