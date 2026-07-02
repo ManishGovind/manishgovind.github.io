@@ -579,7 +579,8 @@ body {
   margin: 0;
 }
 
-.regen-teaser-figure img {
+.regen-teaser-figure img,
+.regen-teaser-figure video {
   width: 100%;
   height: auto;
   display: block;
